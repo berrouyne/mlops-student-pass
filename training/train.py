@@ -1,26 +1,27 @@
-import pickle
-import numpy as np
 from sklearn.linear_model import LogisticRegression
+import numpy as np
+import pickle
 from pathlib import Path
 
-# Tiny dataset example (replace later with real data)
 X = np.array([
-    [2, 0.50, 8],
+    [2, 0.50, 10],
     [6, 0.90, 14],
-    [4, 0.70, 10],
+    [4, 0.70, 12],
     [8, 0.95, 16],
-    [1, 0.40, 6],
-    [7, 0.80, 13],
-    [3, 0.60, 9],
+    [1, 0.40, 8],
+    [7, 0.85, 15],
+    [3, 0.60, 11]
 ])
 
-y = np.array([0, 1, 0, 1, 0, 1, 0])  # 0=FAIL, 1=PASS
+y = np.array([0, 1, 0, 1, 0, 1, 0])
 
-model = LogisticRegression()
+model = LogisticRegression(
+    solver="liblinear",
+    max_iter=200
+)
+
 model.fit(X, y)
 
-Path("model").mkdir(parents=True, exist_ok=True)
+Path("model").mkdir(exist_ok=True)
 with open("model/model.pkl", "wb") as f:
     pickle.dump(model, f)
-
-print("✅ Trained model saved to model/model.pkl")
