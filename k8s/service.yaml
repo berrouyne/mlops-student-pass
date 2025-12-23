@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: student-pass-svc
+  namespace: mlops
+spec:
+  selector:
+    app: student-pass
+  ports:
+    - port: 80
+      targetPort: 8000
+  type: ClusterIP
