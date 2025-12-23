@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/YOUR_GH_USER/mlops-student-pass.git
+    repoURL: https://github.com/berrouyne/mlops-student-pass.git
     targetRevision: main
     path: k8s
   destination:
