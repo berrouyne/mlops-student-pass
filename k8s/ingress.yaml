@@ -4,8 +4,15 @@ metadata:
   name: student-pass-ingress
   namespace: mlops
   annotations:
-    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - student.berrouyne.space
+      secretName: student-pass-tls
   rules:
     - host: student.berrouyne.space
       http:
